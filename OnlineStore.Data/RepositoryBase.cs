@@ -10,11 +10,12 @@ using OnlineStore.Data.Entities;
 
 namespace OnlineStore.Data
 {
-    public abstract class RepositoryBase<TEntity, TKey> : IRepository<TEntity, TKey>
+    public abstract class RepositoryBase<TEntity, TKey> : IRepository<TEntity, TKey>, IDisposable
         where TEntity : EntityBase<TKey>
     {
         private readonly DbContext _dbContext;
         private readonly DbSet<TEntity> _dbSet;
+        private bool _disposed;
 
         public RepositoryBase(DbContext dbContext)
         {
@@ -22,6 +23,8 @@ namespace OnlineStore.Data
             _dbSet = _dbContext.Set<TEntity>();
         }
 
+        #region IRepositoryMembers
+        
         public Task<TEntity> GetAsync(TKey id)
         {
             return _dbSet.FindAsync(id);
@@ -64,5 +67,30 @@ namespace OnlineStore.Data
         {
             return _dbContext.SaveChangesAsync();
         }
+        #endregion
+
+        #region IDisposibleMembers
+        
+        ~RepositoryBase()
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing && !_disposed)
+            {
+                _dbContext.Dispose();
+            }
+
+            _disposed = true;
+        }
+        #endregion
     }
 }

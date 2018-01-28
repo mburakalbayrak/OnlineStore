@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{850365FC-0909-4D8E-A3E8-21449283C8E1}</ProjectGuid>
+    <ProjectGuid>{53CE7325-FAAF-48F6-9629-2F3BD7E01A61}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OnlineStore.Data</RootNamespace>
-    <AssemblyName>OnlineStore.Data</AssemblyName>
+    <RootNamespace>OnlineStore.Business.Contracts</RootNamespace>
+    <AssemblyName>OnlineStore.Business.Contracts</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,27 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data Repositories\CategoryRepository.cs" />
-    <Compile Include="Data Repositories\ProductRepository.cs" />
-    <Compile Include="Data Repositories\UserRepository.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="OnlineStoreContext.cs" />
+    <Compile Include="ICategoryEngine.cs" />
+    <Compile Include="IProductEngine.cs" />
+    <Compile Include="IUserEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OnlineStore.Data.Contracts\OnlineStore.Data.Contracts.csproj">
-      <Project>{8edca3cf-c471-4dd7-b907-0450d9e173c8}</Project>
-      <Name>OnlineStore.Data.Contracts</Name>
+    <ProjectReference Include="..\OnlineStore.Core.Common.Contracts\OnlineStore.Core.Common.Contracts.csproj">
+      <Project>{98642418-317b-43b5-9162-3fad8269a9c5}</Project>
+      <Name>OnlineStore.Core.Common.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OnlineStore.Data.Entities\OnlineStore.Data.Entities.csproj">
-      <Project>{A1C080F9-F524-49BA-871E-1D5ED1169F9C}</Project>
-      <Name>OnlineStore.Data.Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
