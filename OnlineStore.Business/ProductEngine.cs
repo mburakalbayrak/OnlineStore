@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineStore.Business
 {
-    public class Class1
+    public class ProductEngine : BusinessEngineBase
     {
     }
 }
