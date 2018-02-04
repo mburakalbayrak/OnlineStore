@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using OnlineStore.ServiceHost.API.Handlers;
 
 namespace OnlineStore.ServiceHost.API
 {
@@ -10,6 +11,7 @@ namespace OnlineStore.ServiceHost.API
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.MessageHandlers.Add(new ApiResponseHandler());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
